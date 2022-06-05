@@ -1,4 +1,4 @@
-package com.taskimobile;
+package com.mobileApp;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 
@@ -10,7 +10,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "taskiMobile";
+    return "mobileApp";
   }
   @Override
 protected void onCreate(Bundle savedInstanceState) {
