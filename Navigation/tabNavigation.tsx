@@ -18,6 +18,7 @@ const TabNavigator = () => {
         component={Home}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({size, focused}) => (
             <Icon
               name="home"
@@ -32,6 +33,7 @@ const TabNavigator = () => {
         component={Search}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="search"
@@ -46,6 +48,7 @@ const TabNavigator = () => {
         component={Favourites}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="heart"
@@ -61,6 +64,7 @@ const TabNavigator = () => {
         component={MyCart}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="shopping-cart"
@@ -75,6 +79,7 @@ const TabNavigator = () => {
         component={Profile}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="user"
