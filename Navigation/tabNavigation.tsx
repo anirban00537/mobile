@@ -6,7 +6,8 @@ import Search from '../Screens/Search';
 import MyCart from '../Screens/MyCart';
 import Profile from '../Screens/Profile';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import {colors} from '../Constant/colors';
+import {Text} from 'react-native';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -16,9 +17,21 @@ const TabNavigator = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon name="home" size={size} color={color} />
+          tabBarIcon: ({size, focused}) => (
+            <Icon
+              name="home"
+              size={size}
+              color={focused ? colors.primary : colors.gray}
+            />
+          ),
+          tabBarLabel: ({focused, color}) => (
+            <Text
+              style={{
+                color: focused ? colors.primary : colors.gray,
+                fontSize: 10,
+              }}>
+              Home
+            </Text>
           ),
         }}
       />
@@ -26,9 +39,21 @@ const TabNavigator = () => {
         name="Search"
         component={Search}
         options={{
-          tabBarLabel: 'Search',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="search" size={size} color={color} />
+          tabBarLabel: ({focused, color}) => (
+            <Text
+              style={{
+                color: focused ? colors.primary : colors.gray,
+                fontSize: 10,
+              }}>
+              Search
+            </Text>
+          ),
+          tabBarIcon: ({color, size, focused}) => (
+            <Icon
+              name="search"
+              size={size}
+              color={focused ? colors.primary : colors.gray}
+            />
           ),
         }}
       />
@@ -36,9 +61,21 @@ const TabNavigator = () => {
         name="Favourites"
         component={Favourites}
         options={{
-          tabBarLabel: 'Favourites',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="heart" size={size} color={color} />
+          tabBarLabel: ({focused, color}) => (
+            <Text
+              style={{
+                color: focused ? colors.primary : colors.gray,
+                fontSize: 10,
+              }}>
+              Favourites
+            </Text>
+          ),
+          tabBarIcon: ({color, size, focused}) => (
+            <Icon
+              name="heart"
+              size={size}
+              color={focused ? colors.primary : colors.gray}
+            />
           ),
         }}
       />
@@ -47,9 +84,21 @@ const TabNavigator = () => {
         name="MyCart"
         component={MyCart}
         options={{
-          tabBarLabel: 'MyCart',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="shopping-cart" size={size} color={color} />
+          tabBarLabel: ({focused, color}) => (
+            <Text
+              style={{
+                color: focused ? colors.primary : colors.gray,
+                fontSize: 10,
+              }}>
+              Cart
+            </Text>
+          ),
+          tabBarIcon: ({color, size, focused}) => (
+            <Icon
+              name="shopping-cart"
+              size={size}
+              color={focused ? colors.primary : colors.gray}
+            />
           ),
         }}
       />
@@ -57,9 +106,21 @@ const TabNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="user" size={size} color={color} />
+          tabBarLabel: ({focused, color}) => (
+            <Text
+              style={{
+                color: focused ? colors.primary : colors.gray,
+                fontSize: 10,
+              }}>
+              Profile
+            </Text>
+          ),
+          tabBarIcon: ({color, size, focused}) => (
+            <Icon
+              name="user"
+              size={size}
+              color={focused ? colors.primary : colors.gray}
+            />
           ),
         }}
       />
