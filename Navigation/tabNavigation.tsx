@@ -17,6 +17,7 @@ const TabNavigator = () => {
         name="Home"
         component={Home}
         options={{
+          tabBarShowLabel: false,
           tabBarIcon: ({size, focused}) => (
             <Icon
               name="home"
@@ -24,30 +25,13 @@ const TabNavigator = () => {
               color={focused ? colors.primary : colors.gray}
             />
           ),
-          tabBarLabel: ({focused, color}) => (
-            <Text
-              style={{
-                color: focused ? colors.primary : colors.gray,
-                fontSize: 10,
-              }}>
-              Home
-            </Text>
-          ),
         }}
       />
       <Tab.Screen
         name="Search"
         component={Search}
         options={{
-          tabBarLabel: ({focused, color}) => (
-            <Text
-              style={{
-                color: focused ? colors.primary : colors.gray,
-                fontSize: 10,
-              }}>
-              Search
-            </Text>
-          ),
+          tabBarShowLabel: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="search"
@@ -61,15 +45,7 @@ const TabNavigator = () => {
         name="Favourites"
         component={Favourites}
         options={{
-          tabBarLabel: ({focused, color}) => (
-            <Text
-              style={{
-                color: focused ? colors.primary : colors.gray,
-                fontSize: 10,
-              }}>
-              Favourites
-            </Text>
-          ),
+          tabBarShowLabel: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="heart"
@@ -84,15 +60,7 @@ const TabNavigator = () => {
         name="MyCart"
         component={MyCart}
         options={{
-          tabBarLabel: ({focused, color}) => (
-            <Text
-              style={{
-                color: focused ? colors.primary : colors.gray,
-                fontSize: 10,
-              }}>
-              Cart
-            </Text>
-          ),
+          tabBarShowLabel: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="shopping-cart"
@@ -106,15 +74,7 @@ const TabNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: ({focused, color}) => (
-            <Text
-              style={{
-                color: focused ? colors.primary : colors.gray,
-                fontSize: 10,
-              }}>
-              Profile
-            </Text>
-          ),
+          tabBarShowLabel: false,
           tabBarIcon: ({color, size, focused}) => (
             <Icon
               name="user"
