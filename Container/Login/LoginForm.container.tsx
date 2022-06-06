@@ -44,7 +44,6 @@ export default LoginForm;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingHorizontal: 20,
     marginVertical: 40,
   },
   input: {

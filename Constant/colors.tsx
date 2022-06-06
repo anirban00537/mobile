@@ -6,4 +6,5 @@ export const colors = {
   white: '#ffffff',
   gray: '#9e9e9e',
   grayLight: '#f7f5f5',
+  facebook: '#3b5998',
 };

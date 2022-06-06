@@ -2,13 +2,17 @@ import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors} from '../Constant/colors';
 import LoginForm from '../Container/Login/LoginForm.container';
+import SocialLogin from '../Components/SocialLogin/Index';
 
 const Login = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-      <Text style={styles.largeText}>Login</Text>
-      <LoginForm />
+      <View>
+        <Text style={styles.largeText}>Login</Text>
+        <LoginForm />
+      </View>
+      <SocialLogin text="Or Login With" />
     </View>
   );
 };
@@ -19,6 +23,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     height: '100%',
+    paddingHorizontal: 20,
+    justifyContent: 'space-between',
   },
   largeText: {
     fontSize: 40,
@@ -26,6 +32,5 @@ const styles = StyleSheet.create({
     color: colors.black,
     marginTop: 20,
     marginBottom: 20,
-    marginHorizontal: 20,
   },
 });
