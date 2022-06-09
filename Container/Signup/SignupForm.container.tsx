@@ -5,7 +5,7 @@ import {colors} from '../../Constant/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
-const LoginForm = () => {
+const SignupForm = () => {
   const navigation: any = useNavigation();
 
   return (
@@ -14,6 +14,16 @@ const LoginForm = () => {
         size="2xl"
         variant="unstyled"
         placeholder="Email"
+        style={styles.input}
+      />
+      <Input
+        size="2xl"
+        variant="unstyled"
+        placeholder="Name"
+        type="text"
+        onChange={() => {
+          console.log('changed');
+        }}
         style={styles.input}
       />
       <Input
@@ -29,9 +39,9 @@ const LoginForm = () => {
       <TouchableOpacity
         style={styles.forgetContainer}
         onPress={() => {
-          navigation.navigate('Signup', {});
+          navigation.navigate('Login', {});
         }}>
-        <Text style={styles.text}>Dont have an account?</Text>
+        <Text style={styles.text}>Already have an account?</Text>
         <Icon
           name="arrow-right"
           size={20}
@@ -44,13 +54,13 @@ const LoginForm = () => {
         colorScheme="dark"
         background={colors.primary}
         marginTop={5}>
-        Login
+        Signup
       </Button>
     </View>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
 
 const styles = StyleSheet.create({
   container: {
