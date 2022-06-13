@@ -1,25 +1,23 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://192.168.0.108:3000';
+const service = axios.create({
+  baseURL: 'http://192.168.0.107:5000',
 
-axios.interceptors.request.use((config: any) => {
-  config.headers.Authorization = '';
+  headers: {
+    Accept: 'application/json',
+  },
+});
+
+service.interceptors.request.use(config => {
+  // const token
+  // if (token) {
+  // config.headers.Authorization = `Bearer ${token}`;
+  // }
   return config;
 });
 
-axios.interceptors.response.use(response => {
+service.interceptors.response.use(response => {
   return response;
 });
 
-axios.interceptors.response.use(
-  response => {
-    return response;
-  },
-  error => {
-    if (error.response.status === 401) {
-      //   localStorage.removeItem('token');
-      //   window.location.reload();
-    }
-    return Promise.reject(error);
-  },
-);
+export default service;
