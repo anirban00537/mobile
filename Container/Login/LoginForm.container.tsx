@@ -1,32 +1,36 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Button, Input} from 'native-base';
+import {Button, Input, Spinner, useToast} from 'native-base';
 import {colors} from '../../Constant/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import {useMutation, useQueryClient} from 'react-query';
 import {login} from '../../service/authentication';
+import useStatushandle from '../../hooks/useStatushandle';
 const LoginForm = () => {
   const navigation: any = useNavigation();
   const queryClient = useQueryClient();
+  const {setError, setSuccess} = useStatushandle();
   const [user, setUser] = React.useState<any>({
     email: '',
     password: '',
   });
+
   const {mutate, isLoading} = useMutation(login, {
-    onSuccess: data => {
-      console.log(data, 'success');
-      const message = 'success';
+    onSuccess: (data: any) => {
+      setSuccess(data?.response?.data?.message);
+      setUser({email: '', password: ''});
     },
-    onError: data => {
-      console.log(data, 'error');
+    onError: (data: any) => {
+      setError(data?.response?.data?.message);
     },
     onSettled: () => {
       queryClient.invalidateQueries('create');
     },
   });
-  const handleSubmit = () => {
-    mutate(user);
+  const handleSubmit = async () => {
+    const data = await mutate(user);
+    console.log(data, 'data');
   };
 
   return (
@@ -61,13 +65,15 @@ const LoginForm = () => {
           color={colors.gray}
         />
       </TouchableOpacity>
+
       <Button
         leftIcon={<Icon name="sign-in" size={20} color={colors.white} />}
         colorScheme="dark"
+        disabled={isLoading || !user.email || !user.password}
         background={colors.primary}
         marginTop={5}
         onPress={handleSubmit}>
-        Login
+        {isLoading ? <Spinner color={colors.white} /> : 'Login'}
       </Button>
     </View>
   );
