@@ -22,11 +22,14 @@ const useStatushandle = () => {
       setError('');
     }
     if (success) {
+      console.log(success, 'success');
       toast.show({
         render: () => {
           return (
             <Box bg="green.500" px="2" py="1" rounded="sm" mb={5}>
-              {success}
+              <Text color={'white'} fontSize="sm">
+                {success}
+              </Text>
             </Box>
           );
         },

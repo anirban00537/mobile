@@ -1,29 +1,80 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
-import {Button, Input} from 'native-base';
+import {Input} from 'native-base';
+import Button from '../../Components/Button/index';
 import {colors} from '../../Constant/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import {useMutation} from 'react-query';
+import {register} from '../../service/authentication';
+import useStatushandle from '../../hooks/useStatushandle';
 
 const SignupForm = () => {
   const navigation: any = useNavigation();
-
+  const {setError, setSuccess} = useStatushandle();
+  const [user, setUser] = React.useState<any>({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+  });
+  const {mutate, isLoading} = useMutation(register, {
+    onSuccess: async (data: any) => {
+      await setSuccess('Registration Successful');
+      await setUser({
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        confirm_password: '',
+      });
+      navigation.navigate('Login', {});
+    },
+    onError: (data: any) => {
+      setError(data?.response?.data?.message);
+    },
+  });
+  const handleSubmit = async () => {
+    await mutate({
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      password: user.password,
+    });
+  };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Input
         size="2xl"
         variant="unstyled"
         placeholder="Email"
         style={styles.input}
+        value={user.email}
+        onChangeText={text => setUser({...user, email: text})}
       />
       <Input
         size="2xl"
         variant="unstyled"
-        placeholder="Name"
+        placeholder="First Name"
         type="text"
-        onChange={() => {
-          console.log('changed');
-        }}
+        value={user.first_name}
+        onChangeText={text => setUser({...user, first_name: text})}
+        style={styles.input}
+      />
+      <Input
+        size="2xl"
+        variant="unstyled"
+        placeholder="Last Name"
+        type="text"
+        value={user.last_name}
+        onChangeText={text => setUser({...user, last_name: text})}
         style={styles.input}
       />
       <Input
@@ -31,9 +82,17 @@ const SignupForm = () => {
         variant="unstyled"
         placeholder="Password"
         type="password"
-        onChange={() => {
-          console.log('changed');
-        }}
+        value={user.password}
+        onChangeText={text => setUser({...user, password: text})}
+        style={styles.input}
+      />
+      <Input
+        size="2xl"
+        variant="unstyled"
+        placeholder="Confirm Password"
+        type="password"
+        value={user.confirm_password}
+        onChangeText={text => setUser({...user, confirm_password: text})}
         style={styles.input}
       />
       <TouchableOpacity
@@ -49,14 +108,16 @@ const SignupForm = () => {
           color={colors.gray}
         />
       </TouchableOpacity>
-      <Button
-        leftIcon={<Icon name="sign-in" size={20} color={colors.white} />}
-        colorScheme="dark"
+
+      <Button.Loading
+        icon={<Icon name="sign-in" size={20} color={colors.white} />}
         background={colors.primary}
-        marginTop={5}>
+        isLoading={isLoading}
+        onPress={handleSubmit}
+        margin={0}>
         Signup
-      </Button>
-    </View>
+      </Button.Loading>
+    </ScrollView>
   );
 };
 
@@ -82,6 +143,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginBottom: 20,
   },
   icon: {
     color: colors.primary,

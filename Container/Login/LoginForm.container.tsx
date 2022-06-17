@@ -9,7 +9,6 @@ import {login} from '../../service/authentication';
 import useStatushandle from '../../hooks/useStatushandle';
 const LoginForm = () => {
   const navigation: any = useNavigation();
-  const queryClient = useQueryClient();
   const {setError, setSuccess} = useStatushandle();
   const [user, setUser] = React.useState<any>({
     email: '',
@@ -18,19 +17,16 @@ const LoginForm = () => {
 
   const {mutate, isLoading} = useMutation(login, {
     onSuccess: (data: any) => {
-      setSuccess(data?.response?.data?.message);
-      setUser({email: '', password: ''});
+      setSuccess('Login Successful');
+      console.log(data.data.token, 'success');
+      // setUser({email: '', password: ''});
     },
     onError: (data: any) => {
       setError(data?.response?.data?.message);
     },
-    onSettled: () => {
-      queryClient.invalidateQueries('create');
-    },
   });
   const handleSubmit = async () => {
-    const data = await mutate(user);
-    console.log(data, 'data');
+    await mutate(user);
   };
 
   return (
