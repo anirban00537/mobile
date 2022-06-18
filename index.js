@@ -2,8 +2,9 @@ import * as React from 'react';
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
 import {NativeBaseProvider, Box} from 'native-base';
+import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider, focusManager} from 'react-query';
-
+import {store} from './store/store';
 import App from './App';
 import 'react-native-gesture-handler';
 import {useAppState} from './hooks/useAppState';
@@ -32,11 +33,13 @@ export default function Main() {
   useAppState(onAppStateChange);
   return (
     <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <NativeBaseProvider>
-          <App />
-        </NativeBaseProvider>
-      </QueryClientProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <NativeBaseProvider>
+            <App />
+          </NativeBaseProvider>
+        </QueryClientProvider>
+      </Provider>
     </React.StrictMode>
   );
 }
