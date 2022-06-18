@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import StackNavigation from './Navigation/StackNavigation';
-import AuthNavigation from './Navigation/AuthNavigation';
+import Navigation from './Navigation';
 const App = () => {
-  return <AuthNavigation />;
+  return <Navigation />;
 };
 
 export default App;
