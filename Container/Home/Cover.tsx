@@ -3,28 +3,29 @@ import React from 'react';
 import {Box, Text} from 'native-base';
 import Button from '../../Components/Button';
 import {colors} from '../../Constant/colors';
+import {useNavigation} from '@react-navigation/native';
 const image = {
   uri: 'https://static.toiimg.com/photo/80482428/2-Rohit-Khandelwal.jpg',
 };
 const Cover = () => {
+  const navigation: any = useNavigation();
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <View style={styles.textContainer}>
-          <Text fontSize={50} fontWeight="bold" color={'white'}>
-            Givenchy
+          <Text fontSize={40} fontWeight="bold" color={'white'}>
+            Mens Fashion
           </Text>
-          <Text fontSize={25} fontWeight="medium" color={'white'}>
-            The latest drop
+          <Text fontSize={20} fontWeight="medium" color={'white'}>
+            100% Original Products
           </Text>
-          <Box
-            w={'100%'}
-            marginTop={10}
-            alignItems={'center'}
-            justifyContent={'center'}>
-            <Button.Plain background={colors.white} width={200}>
+          <Box w={'100%'} marginTop={10}>
+            <Button.Plain
+              background={colors.white}
+              width={'100%'}
+              onPress={() => navigation.navigate('Search', {})}>
               <Text color={colors.black} fontWeight="bold">
-                SHOP NOW
+                Explore more
               </Text>
             </Button.Plain>
           </Box>

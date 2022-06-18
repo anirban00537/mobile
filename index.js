@@ -9,6 +9,7 @@ import App from './App';
 import 'react-native-gesture-handler';
 import {useAppState} from './hooks/useAppState';
 import {useOnlineManager} from './hooks/useOnlineManager';
+import AuthLayout from './Layout/Auth.layout';
 function onAppStateChange(status) {
   // React Query already supports in web browser refetch on window focus by default
   if (Platform.OS !== 'web') {
@@ -35,9 +36,11 @@ export default function Main() {
     <React.StrictMode>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <NativeBaseProvider>
-            <App />
-          </NativeBaseProvider>
+          <AuthLayout>
+            <NativeBaseProvider>
+              <App />
+            </NativeBaseProvider>
+          </AuthLayout>
         </QueryClientProvider>
       </Provider>
     </React.StrictMode>

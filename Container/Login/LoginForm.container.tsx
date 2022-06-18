@@ -4,7 +4,7 @@ import {Button, Input, Spinner, useToast} from 'native-base';
 import {colors} from '../../Constant/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
-import {useMutation, useQueryClient} from 'react-query';
+import {useMutation} from 'react-query';
 import {login} from '../../service/authentication';
 import useStatushandle from '../../hooks/useStatushandle';
 const LoginForm = () => {

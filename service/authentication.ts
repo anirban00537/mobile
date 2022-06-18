@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
-export const check = async () => {
-  const response = await request.get('/');
+export const me = async () => {
+  const response = await request.get('/me');
   return response;
 };
 export const login = async (user: any) => {

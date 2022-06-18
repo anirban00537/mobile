@@ -4,13 +4,7 @@ import {colors} from '../Constant/colors';
 import LoginForm from '../Container/Login/LoginForm.container';
 import SocialLogin from '../Components/SocialLogin/Index';
 import {useQuery} from 'react-query';
-import {check} from '../service/authentication';
 const Login = () => {
-  const {data, isLoading, isError, refetch} = useQuery('check', check);
-  console.log(data, 'datadatadatadata');
-  if (isLoading) {
-    return <Text>Loading...</Text>;
-  }
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
