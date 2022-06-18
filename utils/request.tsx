@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: 'http://172.16.192.2:5000',
+  baseURL: 'http://192.168.0.106:5000',
 
   headers: {
     Accept: 'application/json',

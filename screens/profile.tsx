@@ -1,10 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-
+import {useNavigation} from '@react-navigation/native';
 const Profile = () => {
+  const navigation: any = useNavigation();
   return (
     <View>
-      <Text>profile</Text>
+      <Text onPress={() => navigation.navigate('Login', {})}>profile</Text>
     </View>
   );
 };
