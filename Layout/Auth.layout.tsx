@@ -17,7 +17,10 @@ const AuthLayout = ({children}: any) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
+      <StatusBar
+        backgroundColor={colors.navigationBackground}
+        barStyle="dark-content"
+      />
       {children}
     </>
   );
