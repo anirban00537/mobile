@@ -2,15 +2,20 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../Screens/Home';
 import Favourites from '../Screens/Favourites';
-import Search from '../Screens/Search';
 import MyCart from '../Screens/MyCart';
 import Profile from '../Screens/Profile';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IconAnt from 'react-native-vector-icons/AntDesign';
 import {colors} from '../Constant/colors';
-import {Text} from 'react-native';
+import {Avatar} from 'native-base';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/store';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  const {isLoggedIn, user}: any = useSelector((state: RootState) => state.user);
+  const navigation: any = useNavigation();
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -18,40 +23,42 @@ const TabNavigator = () => {
         component={Home}
         options={{
           tabBarShowLabel: false,
-          headerShown: false,
+          title: '',
+          // headerShown: false,
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+          headerLeft: () => {
+            return (
+              <Icon
+                name="heart"
+                size={18}
+                color={colors.black}
+                onPress={() => {
+                  navigation.navigate('Favourites');
+                }}
+                style={{marginLeft: 15}}
+              />
+            );
+          },
+          headerRight: () => {
+            return (
+              <Icon
+                name="search"
+                size={18}
+                onPress={() => {
+                  navigation.navigate('Search');
+                }}
+                color={colors.black}
+                style={{
+                  marginRight: 15,
+                }}
+              />
+            );
+          },
           tabBarIcon: ({size, focused}) => (
             <Icon
               name="home"
-              size={size}
-              color={focused ? colors.primary : colors.gray}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          tabBarShowLabel: false,
-          headerShown: false,
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon
-              name="search"
-              size={size}
-              color={focused ? colors.primary : colors.gray}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Favourites"
-        component={Favourites}
-        options={{
-          tabBarShowLabel: false,
-          headerShown: false,
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon
-              name="heart"
               size={size}
               color={focused ? colors.primary : colors.gray}
             />
@@ -80,13 +87,23 @@ const TabNavigator = () => {
         options={{
           tabBarShowLabel: false,
           headerShown: false,
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon
-              name="user"
-              size={size}
-              color={focused ? colors.primary : colors.gray}
-            />
-          ),
+          tabBarIcon: ({color, size, focused}) =>
+            isLoggedIn && user.first_name ? (
+              <Avatar
+                bg="lightBlue.400"
+                size={size}
+                source={{
+                  uri: 'https://bit.ly/broken-link',
+                }}>
+                {user.first_name?.charAt(0)}
+              </Avatar>
+            ) : (
+              <Icon
+                name="user"
+                size={size}
+                color={focused ? colors.primary : colors.gray}
+              />
+            ),
         }}
       />
     </Tab.Navigator>

@@ -1,19 +1,42 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import TabNavigation from './tabNavigation';
 import Details from '../Screens/Details';
 import Login from '../Screens/Login';
 import Signup from '../Screens/Signup';
+import Search from '../Screens/Search';
+import Favourites from '../Screens/Favourites';
+import {colors} from '../Constant/colors';
 const Stack = createNativeStackNavigator();
-
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: colors.white,
+  },
+};
 export default function StackNavigation() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Stack.Navigator>
         <Stack.Screen
           name="TabNavigation"
           component={TabNavigation}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Favourites"
+          component={Favourites}
           options={{
             headerShown: false,
           }}
