@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useMutation} from 'react-query';
 import {login} from '../../service/authentication';
 import useStatushandle from '../../hooks/useStatushandle';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const LoginForm = () => {
   const navigation: any = useNavigation();
   const {setError, setSuccess} = useStatushandle();
@@ -20,6 +21,8 @@ const LoginForm = () => {
       setSuccess('Login Successful');
       console.log(data.data.token, 'success');
       // setUser({email: '', password: ''});
+      AsyncStorage.setItem('token', data.data.token);
+      navigation.navigate('TabNavigation', {});
     },
     onError: (data: any) => {
       setError(data?.response?.data?.message);
