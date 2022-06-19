@@ -13,7 +13,7 @@ const navTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: colors.white,
+    background: colors.navigationBackground,
   },
 };
 export default function StackNavigation() {

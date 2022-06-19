@@ -7,4 +7,5 @@ export const colors = {
   gray: '#7f8c8d',
   grayLight: '#ecf0f1',
   facebook: '#3b5998',
+  navigationBackground: '#f7f7f7',
 };

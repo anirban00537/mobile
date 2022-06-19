@@ -17,7 +17,12 @@ const TabNavigator = () => {
   const {isLoggedIn, user}: any = useSelector((state: RootState) => state.user);
   const navigation: any = useNavigation();
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarStyle: {
+          backgroundColor: colors.navigationBackground,
+        },
+      })}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -26,7 +31,7 @@ const TabNavigator = () => {
           title: '',
           // headerShown: false,
           headerStyle: {
-            backgroundColor: colors.white,
+            backgroundColor: colors.navigationBackground,
           },
           headerLeft: () => {
             return (
