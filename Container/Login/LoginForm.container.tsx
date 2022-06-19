@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Button, Input, Spinner, useToast} from 'native-base';
+import {Button, Input, Spinner} from 'native-base';
 import {colors} from '../../Constant/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
