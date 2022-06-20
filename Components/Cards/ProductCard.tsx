@@ -2,6 +2,7 @@ import {StyleSheet, View, Dimensions, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Image, Text} from 'native-base';
 import {colors} from '../../Constant/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const width = Dimensions.get('window').width;
 const numColumns = 2;
@@ -20,7 +21,10 @@ const ProductCard = ({item}: any) => {
         <Text style={styles.description} numberOfLines={1}>
           {item.description}
         </Text>
-        <Text style={styles.price}>{item.price}</Text>
+        <View style={styles.priceContainer}>
+          <Text style={styles.price}>{item.price}</Text>
+          <Icon name="heart" size={15} color={colors.red} />
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: colors.black,
+    color: colors.lightBlack,
   },
   detailsContainer: {
     padding: 5,
@@ -61,5 +65,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: colors.gray,
     letterSpacing: 1,
+  },
+
+  priceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

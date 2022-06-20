@@ -5,7 +5,7 @@ import Button from '../../Components/Button';
 import {colors} from '../../Constant/colors';
 import {useNavigation} from '@react-navigation/native';
 const image = {
-  uri: 'https://static.toiimg.com/photo/80482428/2-Rohit-Khandelwal.jpg',
+  uri: 'https://www.tissotwatches.com/media/catalog/category/category_banner_men_seastar.jpg',
 };
 const Cover = () => {
   const navigation: any = useNavigation();
@@ -19,16 +19,6 @@ const Cover = () => {
           <Text fontSize={20} fontWeight="medium" color={'white'}>
             100% Original Products
           </Text>
-          <Box w={'100%'} marginTop={10}>
-            <Button.Plain
-              background={colors.white}
-              width={'100%'}
-              onPress={() => navigation.navigate('Search', {})}>
-              <Text color={colors.black} fontWeight="bold">
-                Explore more
-              </Text>
-            </Button.Plain>
-          </Box>
         </View>
       </ImageBackground>
     </View>
@@ -40,12 +30,14 @@ export default Cover;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 300,
-    backgroundColor: '#fff',
+    height: 150,
+    borderRadius: 60,
   },
   image: {
     flex: 1,
     justifyContent: 'center',
+    borderRadius: 10,
+    overflow: 'hidden',
   },
   text: {
     color: 'white',

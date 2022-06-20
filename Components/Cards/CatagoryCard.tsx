@@ -6,7 +6,7 @@ import {colors} from '../../Constant/colors';
 const CatagoryCard = () => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Text fontWeight={'semibold'}>CatagoryCard</Text>
+      <Text fontWeight={'medium'}>CatagoryCard</Text>
     </TouchableOpacity>
   );
 };
@@ -15,12 +15,13 @@ export default CatagoryCard;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    padding: 7,
     marginRight: 15,
     marginLeft: 2,
     marginVertical: 10,
     backgroundColor: colors.white,
-    borderRadius: 10,
+    borderRadius: 5,
+    borderWidth: 0.3,
+    borderColor: colors.gray,
   },
 });
