@@ -29,7 +29,7 @@ const TabNavigator = () => {
         options={{
           tabBarShowLabel: false,
           title: '',
-          // headerShown: false,
+          headerShown: false,
           headerStyle: {
             backgroundColor: colors.navigationBackground,
           },
