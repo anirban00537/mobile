@@ -23,7 +23,7 @@ const ProductCard = ({item}: any) => {
         </Text>
         <View style={styles.priceContainer}>
           <Text style={styles.price}>{item.price}</Text>
-          <Icon name="heart" size={15} color={colors.red} />
+          <Icon name="heart" size={15} color={colors.lightBlack} />
         </View>
       </View>
     </TouchableOpacity>
@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     flex: 1,
-    margin: 5,
+    margin: 10,
     height: width / numColumns,
     borderRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 1,
+    // shadowColor: '#000',
+    // shadowOffset: {width: 0, height: 2},
+    // shadowOpacity: 0.8,
+    // shadowRadius: 2,
+    // elevation: 1,
   },
   title: {
     fontSize: 15,
@@ -54,11 +54,12 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     padding: 5,
+    width: '100%',
   },
   price: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: colors.primary,
+    color: colors.lightBlack,
     marginTop: 2,
   },
   description: {
