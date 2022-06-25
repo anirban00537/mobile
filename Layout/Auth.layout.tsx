@@ -1,7 +1,5 @@
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import React from 'react';
-import {Spinner} from 'native-base';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useQuery} from 'react-query';
 import {me} from '../service/authentication';
 import {useDispatch} from 'react-redux';

@@ -1,11 +1,26 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '../../Components/Cards';
 import {CheckIcon, ScrollView, Select, Text} from 'native-base';
 import {colors} from '../../Constant/colors';
 
 const CatagorySection = () => {
+  const catagories = [
+    {
+      label: 'Kitchen',
+      value: 'kitchen',
+    },
+    {
+      label: 'Electronics',
+      value: 'Electronics',
+    },
+    {
+      label: 'Bathroom',
+      value: 'Bathroom',
+    },
+  ];
   let [service, setService] = React.useState('');
+  const [selectedValue, setSectedValue] = useState('');
 
   return (
     <View style={styles.container}>
@@ -32,14 +47,14 @@ const CatagorySection = () => {
         </Select>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
-        <Card.CatagoryCard />
+        {catagories.map((catagorie: any) => (
+          <Card.CatagoryCard
+            label={catagorie.label}
+            value={catagorie.value}
+            selected={catagorie?.value === selectedValue ? true : false}
+            setSectedValue={setSectedValue}
+          />
+        ))}
       </ScrollView>
     </View>
   );

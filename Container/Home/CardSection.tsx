@@ -1,7 +1,8 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import React from 'react';
 import Cards from '../../Components/Cards';
-
+import {homeProducts} from '../../service/home';
+import {useQuery} from 'react-query';
 const items = [
   {
     id: 1,
@@ -47,12 +48,18 @@ const items = [
   },
 ];
 const CardSection = () => {
+  const {data, isLoading, isError, refetch, isSuccess} = useQuery(
+    'homeproducts',
+    () => homeProducts(10),
+  );
+  console.log(data?.data, 'data');
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={items}
+        data={data?.data}
         renderItem={({item}) => <Cards.ProductCard item={item} />}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item?._id.toString()}
         numColumns={2}
       />
     </View>
