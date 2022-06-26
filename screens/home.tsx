@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/store';
 import CatagorySection from '../Container/Home/CatagorySection';
@@ -9,13 +9,19 @@ import Search from '../Container/Home/Search';
 // import Cover from '../Container/Home/Cover';
 const Home = () => {
   const {isLoggedIn, user} = useSelector((state: RootState) => state.user);
-
+  const [selectedValue, setSectedValue] = useState('');
   return (
     <ScrollView style={styles.container}>
       <Search />
       <Cover />
-      <CatagorySection />
-      <CardSection />
+      <CatagorySection
+        selectedValue={selectedValue}
+        setSectedValue={setSectedValue}
+      />
+      <CardSection
+        selectedValue={selectedValue}
+        setSectedValue={setSectedValue}
+      />
     </ScrollView>
   );
 };

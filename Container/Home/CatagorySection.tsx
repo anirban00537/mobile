@@ -4,11 +4,15 @@ import Card from '../../Components/Cards';
 import {CheckIcon, ScrollView, Select, Text} from 'native-base';
 import {colors} from '../../Constant/colors';
 
-const CatagorySection = () => {
+const CatagorySection = ({selectedValue, setSectedValue}: any) => {
   const catagories = [
     {
+      label: 'All',
+      value: '',
+    },
+    {
       label: 'Kitchen',
-      value: 'kitchen',
+      value: 'Kitchen',
     },
     {
       label: 'Electronics',
@@ -20,7 +24,6 @@ const CatagorySection = () => {
     },
   ];
   let [service, setService] = React.useState('');
-  const [selectedValue, setSectedValue] = useState('');
 
   return (
     <View style={styles.container}>
